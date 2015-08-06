@@ -1,8 +1,13 @@
 language: python
 python:
-  - "2.7"
-# command to install dependencies
+- '2.7'
 install:
-  - "pip install -r requirements.txt"
-# command to run tests
+- pip install -r requirements.txt
 script: nosetests
+deploy:
+  provider: heroku
+  api_key:
+    secure: i6FTn3hK+/A4UdTYF61ME5i463QwMiLd486+xMGrjiucgwq3aB6QCNLHMVPMWmv19pO41VTSlwDRF/MKOIu5R9xmCsGC3Cebi0rGf4mgizNW9ZlyQuscGjiwaiPSlCMAENVaWDiRoUp3OdSWmjR7N1SE4dLp0N1GA3R7UVu7iu78LANh0MnkguxETHHFVPRoNW3IceyAslaMvVB4+CvstUF9Wef+xmI3BFrAKhOI5Lw0uYuWMELPY2+JoEhy66rbIA4XHP1oxZRMpfIjPaLdhWbdE4hBYlNOdS8HjTwRgRSMXdmraspRBlbspl2wzq+0W1MlTSk9V2sm1FAXpswuxCqIlhTddFuXw+i8I/tIWeysVRlIMDGSOM+NSJFCgLb6uknKpKWK/no4gByr8Td1JqIEQ8LZLTa/MYc/UVAzXsMWQIgkMrVwOe7e6LGxglbRV6THEfrQZUiiF4JIQvKLvq/LY7FQksLnq9o4dwxUbcp25fxFsmnPPE9oz7v9P67FvOnFAvlqGBKGpvtHJWR0udpCXegGWaYBZchO2RFBbnprtKPXcEFxryTSROAMmI8TjubvZYzsnXKD0xL3/JYGvEMnhicqBGzoNkcKjceHsj+VJO3QVyWE6rKEvJnNp31YqBI/BkLwNh3ObgFdCQdGmC/F9UAZXEKrNQfghtyVeBA=
+  app: limitless-tundra-8727
+  on:
+    repo: xirain/flasktaskr
