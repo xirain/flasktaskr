@@ -1,6 +1,5 @@
 .gitignore
 env/
-*.db
 *.pyc
 .coverage
 sql/employees.csv
