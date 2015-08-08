@@ -4,7 +4,7 @@ python:
 install:
 - pip install -r requirements.txt
 script: nosetests
-before_deploy: "which heroku"
+before_deploy: "locate heroku"
 deploy:
   provider: heroku
   api_key:
