@@ -34,7 +34,7 @@ def deploy():
     test()
     # commit()
     heroku()
-    heroku_test()
+    # heroku_test()
 
 def rollback():
     local("heroku rollback")
