@@ -18,10 +18,13 @@ from project.users.views import users_blueprint
 from project.tasks.views import tasks_blueprint
 from project.api.views import api_blueprint
 from project.api.views_v2 import api
+from project.weixin.views import wx_blueprint
+
 
 app.register_blueprint(users_blueprint)
 app.register_blueprint(tasks_blueprint)
 app.register_blueprint(api_blueprint)
+app.register_blueprint(wx_blueprint)
 
 
 @app.errorhandler(404)
