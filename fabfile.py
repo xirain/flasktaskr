@@ -13,7 +13,9 @@ def commit():
     local('git add . && git commit -am "{}"'.format(message))
 
 def push():
-    local("git push origin master")
+    local("git branch")
+    branch = raw_input("Which branch do you want to push to?")
+    local("git push origin {}".format(branch))
 
 def prepare():
     test()
