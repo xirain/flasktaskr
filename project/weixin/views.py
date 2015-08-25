@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import flash, redirect, jsonify, session, url_for, Blueprint, render_template, request
+from flask import flash, redirect, jsonify, session, url_for, Blueprint, render_template, request, make_response
 
 import hashlib
 from project import db
@@ -51,8 +51,19 @@ def weixin_echo_you_said():
     msg_type = xml.find("MsgType").text
     from_user = xml.find("FromUserName").text
     to_user = xml.find("ToUserName").text
-    return render_template('reply_text.xml',from_user=from_user, 
-        to_user=to_user, create_time=int(time.time()), content='current just test, what you said is {}'.format(content))
+
+    response_data = """
+<xml>
+<ToUserName><![CDATA[{}]]></ToUserName>
+<FromUserName><![CDATA[{}]]></FromUserName>
+<CreateTime><{}></CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[{}]]></Content>
+</xml>
+    """.format(to_user, from_user, int(time.time()), 'current just test, what you said is {}'.format(content))
+    response = make_response(response_data)
+    response.content_type = 'application/xml'  
+    return response
 
 
 
