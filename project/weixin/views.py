@@ -5,6 +5,12 @@ import hashlib
 from project import db
 from project.models import Task
 
+import lxml
+import time
+import os
+import urllib2,json
+from lxml import etree
+
 ################
 #### config ####
 ################
@@ -35,3 +41,23 @@ def weixin_verify():
  
     if hashstr == signature:
          return echostr #success
+
+@wx_blueprint.route('/weixin', methods=['POST'])
+def weixin_echo_you_said():
+    str_xml = request.data()
+    xml = etree.fromstring(str_xml)
+    content = xml.find("Content").text
+    msg_type = xml.find("MsgType").text
+    from_user = xml.find("FromUserName").text
+    to_user = xml.find("ToUserName").text
+    return render_template('reply_text.xml',from_user=from_user, 
+        to_user=to_user, create_time=int(time.time()), content='current just test, what you said is '+content)
+
+
+
+
+
+
+
+
+
