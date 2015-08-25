@@ -51,7 +51,7 @@ def weixin_echo_you_said():
     from_user = xml.find("FromUserName").text
     to_user = xml.find("ToUserName").text
     return render_template('reply_text.xml',from_user=from_user, 
-        to_user=to_user, create_time=int(time.time()), content='current just test, what you said is '+content)
+        to_user=to_user, create_time=int(time.time()), content='current just test, what you said is {}'.format(content))
 
 
 
