@@ -24,7 +24,7 @@ wx_blueprint = Blueprint('wx', __name__)
 @wx_blueprint.route('/wx/test/')
 def wx_test():
     data = request.data
-    return render_template('test.html',data=data)
+    return render_template('test.html', data=data)
 
 
 @wx_blueprint.route('/weixin')
@@ -45,7 +45,7 @@ def weixin_verify():
 
 @wx_blueprint.route('/weixin', methods=['POST'])
 def weixin_echo_you_said():
-    str_xml = request.data()
+    str_xml = request.data
     xml = etree.fromstring(str_xml)
     content = xml.find("Content").text
     msg_type = xml.find("MsgType").text
