@@ -23,7 +23,7 @@ wx_blueprint = Blueprint('wx', __name__)
 
 @wx_blueprint.route('/wx/test/')
 def wx_test():
-    data = request.data()
+    data = request.data
     return render_template('test.html',data=data)
 
 
