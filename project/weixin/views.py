@@ -23,7 +23,9 @@ wx_blueprint = Blueprint('wx', __name__)
 
 @wx_blueprint.route('/wx/test/')
 def wx_test():
-    return render_template('test.html')
+    # return render_template('test.html')
+        return render_template('reply_text.xml',from_user='from_user',to_user='to_user', create_time=int(time.time()), content='current just test, what you said is {}'.format('content'))
+
 
 
 @wx_blueprint.route('/weixin')
