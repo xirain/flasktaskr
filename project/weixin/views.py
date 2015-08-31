@@ -66,7 +66,7 @@ def weixin_echo_you_said():
     to_user, 
     str(int(time.time())), 
     msg_type,
-    u'current just test, what you said is {}'.format(content))
+    u"我现在还在开发中，还没有什么功能，您刚才说的是："+ content)
     response = make_response(response_data)
     response.content_type = 'application/xml'  
     return response
