@@ -60,8 +60,12 @@ def weixin_echo_you_said():
 <CreateTime>{}</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
 <Content><![CDATA[{}]]></Content>
+<FuncFlag>0<FuncFlag>
 </xml>
-""".format(from_user,to_user,  int(time.time()), 'current just test, what you said is {}'.format(content))
+""".format(from_user, 
+    to_user, 
+    str(int(time.time())), 
+    'current just test, what you said is {}'.format(content))
     response = make_response(response_data)
     response.content_type = 'application/xml'  
     return response
