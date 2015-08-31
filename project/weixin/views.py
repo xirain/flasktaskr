@@ -1,4 +1,4 @@
-# coding: UTF-8
+# coding:utf-8
 from functools import wraps
 from flask import flash, redirect, jsonify, session, url_for, Blueprint, render_template, request, make_response
 
