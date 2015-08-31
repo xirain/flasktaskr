@@ -66,7 +66,7 @@ def weixin_echo_you_said():
     to_user, 
     str(int(time.time())), 
     msg_type,
-    'current just test, what you said is {}'.format(content))
+    u'current just test, what you said is {}'.format(content))
     response = make_response(response_data)
     response.content_type = 'application/xml'  
     return response
