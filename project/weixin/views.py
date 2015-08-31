@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 from functools import wraps
 from flask import flash, redirect, jsonify, session, url_for, Blueprint, render_template, request, make_response
 
@@ -66,7 +66,7 @@ def weixin_echo_you_said():
     to_user, 
     str(int(time.time())), 
     msg_type,
-    "我现在还在开发中，还没有什么功能，您刚才说的是：" + content)
+    u"我现在还在开发中，还没有什么功能，您刚才说的是：" + content)
     response = make_response(response_data)
     response.content_type = 'application/xml'  
     return response
