@@ -1,3 +1,4 @@
+# coding: UTF-8
 from functools import wraps
 from flask import flash, redirect, jsonify, session, url_for, Blueprint, render_template, request, make_response
 
@@ -5,11 +6,10 @@ import hashlib
 from project import db
 from project.models import Task
 
-import lxml
+import xml.etree.ElementTree as ET
 import time
 import os
 import urllib2,json
-from lxml import etree
 
 ################
 #### config ####
@@ -46,7 +46,7 @@ def weixin_verify():
 @wx_blueprint.route('/weixin', methods=['POST'])
 def weixin_echo_you_said():
     str_xml = request.data
-    xml = etree.fromstring(str_xml)
+    xml = ET.fromstring(str_xml)
     content = xml.find("Content").text
     msg_type = xml.find("MsgType").text
     from_user = xml.find("FromUserName").text
@@ -58,13 +58,14 @@ def weixin_echo_you_said():
 <ToUserName><![CDATA[{}]]></ToUserName>
 <FromUserName><![CDATA[{}]]></FromUserName>
 <CreateTime>{}</CreateTime>
-<MsgType><![CDATA[text]]></MsgType>
+<MsgType><![CDATA[{}]]></MsgType>
 <Content><![CDATA[{}]]></Content>
 <FuncFlag>0<FuncFlag>
 </xml>
 """.format(from_user, 
     to_user, 
     str(int(time.time())), 
+    msg_type,
     'current just test, what you said is {}'.format(content))
     response = make_response(response_data)
     response.content_type = 'application/xml'  
